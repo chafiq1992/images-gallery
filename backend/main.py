@@ -12,7 +12,7 @@ ALLOWED_ORIGINS = [
 ]
 
 # ✅ Correct public R2.dev bucket domain (from Cloudflare > Bucket Settings)
-PUBLIC_R2_URL = "https://pub-aadd8a1590004fc1b5e24e48b4f0a.r2.dev"
+PUBLIC_R2_URL = "https://pub-add8dc3f930040bfa1562eb483b4fa0c.r2.dev"
 
 # ✅ CORS setup so frontend can fetch from backend
 app.add_middleware(
