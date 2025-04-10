@@ -65,23 +65,22 @@ export default function Gallery() {
   }, [selected]);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">🖼️ Irrakids Folder Explorer</h1>
+    <div className="p-6 max-w-screen-xl mx-auto">
+      <h1 className="text-2xl font-bold mb-6">🖼️ Irrakids Folder Explorer</h1>
 
       <button
         onClick={copyImages}
         disabled={selected.length === 0}
-        className="mb-4 px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-400"
+        className="mb-6 px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-400"
       >
         Copy Selected ({selected.length})
       </button>
 
-      {/* FOLDER STRUCTURE */}
       <div className="space-y-4">
         {Object.entries(groupedImages).map(([size, genders]) => (
           <div key={size}>
             <button
-              className="font-semibold text-left text-lg w-full"
+              className="font-semibold text-left text-lg w-full py-2 px-2 bg-gray-100 rounded hover:bg-gray-200"
               onClick={() =>
                 setExpandedSize(prev => (prev === size ? null : size))
               }
@@ -90,11 +89,11 @@ export default function Gallery() {
             </button>
 
             {expandedSize === size && (
-              <div className="pl-4 space-y-2">
+              <div className="pl-6 space-y-3">
                 {Object.entries(genders).map(([gender, urls]) => (
                   <div key={gender}>
                     <button
-                      className="text-left w-full text-md text-blue-700"
+                      className="text-left w-full text-md text-blue-700 py-1 hover:underline"
                       onClick={() =>
                         setExpandedGender(prev =>
                           prev === size + gender ? null : size + gender
@@ -105,11 +104,11 @@ export default function Gallery() {
                     </button>
 
                     {expandedGender === size + gender && (
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 pl-4 mt-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 pl-4 mt-4">
                         {urls.map((url) => (
                           <div
                             key={url}
-                            className={`border-4 rounded cursor-pointer overflow-hidden ${
+                            className={`border-4 rounded cursor-pointer overflow-hidden max-w-[150px] ${
                               selected.includes(url)
                                 ? 'border-blue-500'
                                 : 'border-transparent'
@@ -129,11 +128,11 @@ export default function Gallery() {
                             <img
                               src={url}
                               alt="Product"
-                              className="w-full max-w-[200px] max-h-[200px] object-cover mx-auto"
+                              className="w-full h-[150px] object-cover mx-auto"
                               onError={(e) => {
                                 e.target.onerror = null;
                                 e.target.src =
-                                  'https://via.placeholder.com/300x300?text=Image+Error';
+                                  'https://via.placeholder.com/150?text=Error';
                               }}
                             />
                           </div>
