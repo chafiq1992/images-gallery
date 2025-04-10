@@ -104,11 +104,11 @@ export default function Gallery() {
                     </button>
 
                     {expandedGender === size + gender && (
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 pl-4 mt-4">
+                      <div className="flex flex-wrap gap-4 mt-4 pl-4">
                         {urls.map((url) => (
                           <div
                             key={url}
-                            className={`border-4 rounded cursor-pointer overflow-hidden max-w-[150px] ${
+                            className={`w-[150px] h-[150px] border-4 rounded cursor-pointer overflow-hidden ${
                               selected.includes(url)
                                 ? 'border-blue-500'
                                 : 'border-transparent'
@@ -128,11 +128,10 @@ export default function Gallery() {
                             <img
                               src={url}
                               alt="Product"
-                              className="w-full h-[150px] object-cover mx-auto"
+                              className="w-full h-full object-cover"
                               onError={(e) => {
                                 e.target.onerror = null;
-                                e.target.src =
-                                  'https://via.placeholder.com/150?text=Error';
+                                e.target.src = 'https://via.placeholder.com/150?text=Error';
                               }}
                             />
                           </div>
