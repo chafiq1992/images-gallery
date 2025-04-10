@@ -8,7 +8,7 @@ app = FastAPI()
 
 # ✅ Set your frontend domain here
 ALLOWED_ORIGINS = [
-    "https://irrakids-gallery.onrender.com"
+    "https://images-gallery-e2v9.onrender.com"
 ]
 
 # ✅ Your public R2.dev bucket URL (already enabled in Cloudflare settings)
