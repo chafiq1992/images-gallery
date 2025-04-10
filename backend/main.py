@@ -2,18 +2,19 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import boto3
 import os
+import urllib.parse
 
 app = FastAPI()
 
-# ✅ Set this to your actual frontend Render domain
+# ✅ Set your frontend domain here
 ALLOWED_ORIGINS = [
-    "https://images-gallery-e2v9.onrender.com"
+    "https://irrakids-gallery.onrender.com"
 ]
 
-# ✅ Your public R2.dev URL (after clicking 'Allow Access' in Cloudflare)
+# ✅ Your public R2.dev bucket URL (already enabled in Cloudflare settings)
 PUBLIC_R2_URL = "https://irrakids-stock.8014bc60546828ccb2bfdfe29a21d6f2.r2.dev"
 
-# Enable CORS so the frontend can fetch from the backend
+# ✅ Enable CORS so the frontend can fetch from this backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
@@ -41,8 +42,9 @@ def list_r2_images():
     for obj in response.get("Contents", []):
         key = obj["Key"]
         if key.lower().endswith((".jpg", ".jpeg", ".png")):
-            # ✅ Serve image via public R2.dev URL
-            url = f"{PUBLIC_R2_URL}/{key}"
+            # ✅ Encode spaces and special characters
+            safe_key = urllib.parse.quote(key)
+            url = f"{PUBLIC_R2_URL}/{safe_key}"
             image_urls.append(url)
 
     return image_urls
