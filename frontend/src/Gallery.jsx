@@ -6,7 +6,7 @@ export default function Gallery() {
 
   // Load all image URLs from your R2 bucket
   useEffect(() => {
-    fetch('/images.json') // Static list or API with your image URLs
+    fetch('https://images-gallery-backend.onrender.com/r2-images') // Static list or API with your image URLs
       .then(res => res.json())
       .then(setImages);
   }, []);
