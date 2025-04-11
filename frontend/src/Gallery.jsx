@@ -104,11 +104,11 @@ export default function Gallery() {
                     </button>
 
                     {expandedGender === size + gender && (
-                      <div className="flex flex-wrap gap-4 mt-4 pl-4">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-4 pl-4">
                         {urls.map((url) => (
                           <div
                             key={url}
-                            className={`w-[150px] h-[150px] border-4 rounded cursor-pointer overflow-hidden ${
+                            className={`w-full h-[150px] border-4 rounded cursor-pointer overflow-hidden ${
                               selected.includes(url)
                                 ? 'border-blue-500'
                                 : 'border-transparent'
