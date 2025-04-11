@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "vite preview --port $PORT"
+    "start": "vite preview --port $PORT",
+    "postinstall": "tailwindcss init -p || exit 0"
   },
   "dependencies": {
     "react": "^18.2.0",
